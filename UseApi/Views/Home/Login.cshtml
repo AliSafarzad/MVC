@@ -1,0 +1,139 @@
+﻿@model Models.User
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>فروشگاه کتاب</title>
+
+    <link rel="shortcut icon" href="img/default-icon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/img/default-icon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="~/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+</head>
+
+<body>
+    <div class="auths">
+        <div class="container  col-lg-6">
+            <div class="auth shadow-box">
+                <div class="row" style="min-height:inherit;">
+                    <div class="col-lg-12">
+                        <div class="auth-forms">
+                            <div class="auth-forms-item">
+                                <div class="auth-title">
+                                    <div class="auth-logo d-lg-none d-block">
+                                        <a href="index.html">
+                                            <img src="img/default-icon/logo.png" class="img-fluid"
+                                                 alt="">
+                                        </a>
+                                    </div>
+                                    <h3>وارد شوید</h3>
+                                    <p class="my-3 text-muted">اگر قبلا ثبت نام کرده اید وارد شوید</p>
+                                </div>
+                                <div class="auth-form">
+                                    @if (!@Html.ViewData.ModelState.IsValid)
+                                    {
+                                        <div style="padding-top:0px;padding-bottom:0px" class="alert alert-warning" role="alert">
+                                            <div class="notifi-desc">
+                                                @Html.ValidationSummary()
+                                            </div>
+                                        </div>
+                                    }
+
+                                    <form asp-action="Login" asp-controller="Home" method="post">
+                                         <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                                <input asp-for="username" type="text" class="form-control" placeholder="نام کاربری">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="bi bi-key"></i></span>
+                                                <input asp-for="password" type="password" placeholder="رمز عبور" class="form-control">
+
+                                            </div>
+                                        </div> 
+                                        <div class="form-check form-check-box">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                   id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                مرا فراموش نکن
+                                            </label>
+                                        </div>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <button type="submit" class="btn-login me-2 waves-effect waves-light">
+                                                <i class="bi bi-person"></i>
+                                                ورود به
+                                                سایت
+                                            </button>
+                                           
+                                        </div>
+
+                                    </form>
+                                   @*  <div class="register-box">
+                                        <div class="dash-border">
+                                            <span>یا</span>
+                                        </div>
+                                        <div class="register-link">
+                                            <a href="@Url.Action("Register","Account")" class="btn btn-outline-secondary waves-effect waves-light">
+                                                ثبت نام <i class="bi bi-person-plus ms-1"></i>
+                                            </a>
+                                        </div>
+                                    </div> *@
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/js/jquery-3.6.1.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/app.js"></script>
+    <script src="~/js/jquery-app.js"></script>
+    <script src="~/js/plugin/waves/waves.js"></script>
+
+    <script>
+
+
+        function setInputFilter(textbox, inputFilter) {
+            ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+                textbox.addEventListener(event, function () {
+                    if (inputFilter(this.value)) {
+                        this.oldValue = this.value;
+                        this.oldSelectionStart = this.selectionStart;
+                        this.oldSelectionEnd = this.selectionEnd;
+                    } else if (this.hasOwnProperty("oldValue")) {
+                        this.value = this.oldValue;
+                        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                    } else {
+                        this.value = "";
+                    }
+                });
+            });
+        }
+
+
+        setInputFilter(document.getElementById("PhoneNumber"), function (value) {
+            return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+        });
+    </script>
+
+
+
+</body>
+
+</html>

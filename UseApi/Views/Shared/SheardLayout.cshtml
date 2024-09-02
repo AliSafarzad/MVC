@@ -1,0 +1,88 @@
+﻿
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="enamad" content="13029120" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+     <title>کتابخانه</title>
+    <link rel="shortcut icon" href="~/img/default-icon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/img/default-icon/favicon.ico" type="image/x-icon">
+    <link href="d:\project\useapi\useapi\wwwroot\css\bootstrap.rtl.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/js/plugin/countdown/countdown.css">
+    <link rel="stylesheet" href="~/js/plugin/back-to-top/jquery-backToTop.min.css">
+     <link rel="stylesheet" href="~/js/plugin/hint-css/hint-css.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/js/plugin/range/main.min.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <script src="~/js/jquery-3.6.1.min.js"></script>
+   
+    <script src="~/js/plugin/back-to-top/jquery-backtotop.min.js"></script>
+   
+
+</head>
+
+
+
+<body>
+  
+
+    @RenderBody()
+
+   
+
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/swiper-bundle.min.js"></script>
+    <script src="~/js/app.js"></script>
+    <script src="~/js/plugin/countdown/countdown.js"></script>
+    <script src="~/js/plugin/back-to-top/jquery-backToTop.min.js"></script>
+    <script src="~/js/plugin/hint-css/hint-css.js"></script>
+    <script src="~/js/jquery-app.js"></script>
+    <script src="~/js/plugin/waves/waves.js"></script>
+    <!-- forced in page -->
+    <script src="~/js/plugin/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+
+    <script src="~/js/loadingoverlay.min.js"></script>
+    <script src="~/js/loadingoverlay.js"></script>
+    <script src="~/js/sweetalert.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            ShowCart();
+            CheckSumCart();
+            CountVizitsShow();
+            setInputFilter(document.getElementById("PhoneNumber"), function (value) {
+                return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+            });
+
+
+              $("body").on("input", ":input", function (e) {
+                    setTimeout(function () {
+                        var newString = $(e.target).val()
+                            .replace(/ي/g, 'ی')
+                            .replace(/ك/g, 'ک')
+                            .replace(/<script/g, '')
+                            ;
+
+                        $(e.target).val(newString);
+                    }, 0);
+                });
+
+
+        });
+
+    </script>
+    
+
+
+</body>
+
+</html>
